@@ -1,8 +1,31 @@
 <div class="content-add">
     <div class="add-panel">
-        <input type="text" id="name" name="name" >
-        <input type="text" id="lastName" name="lastName">
-        <input type="text" id="participation" name="participation">
-        <input type="submit" id="submit" name="submit" value="SEND">
+        <form [formGroup]="participationForm" (ngSubmit)="onFormSubmit()">
+            <mat-form-field>
+                <input matInput placeholder="Name" formControlName="name"
+                       [errorStateMatcher]="matcher">
+                <mat-error>
+                    <span *ngIf="!participationForm.get('name').valid && participationForm.get('name').touched">Please enter Last Name</span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Last Name" formControlName="last_name"
+                       [errorStateMatcher]="matcher">
+                <mat-error>
+                    <span *ngIf="!participationForm.get('last_name').valid && participationForm.get('last_name').touched">Please enter Last Name</span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Participation" formControlName="participation"
+                       [errorStateMatcher]="matcher">
+                <mat-error>
+                    <span *ngIf="!participationForm.get('participation').valid && participationForm.get('participation').touched">Please enter Participation</span>
+                </mat-error>
+            </mat-form-field>
+            <div class="button">
+                <button type="submit" [disabled]="!participationForm.valid" mat-flat-button color="primary">SEND</button>
+            </div>
+            <!-- <input type="submit" id="submit" name="submit" value="SEND"> -->
+        </form>
     </div>
 </div>

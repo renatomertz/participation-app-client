@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ParticipationService } from '../service/participation.service'
+
 @Component({
   selector: 'app-participation-list',
   templateUrl: './participation-list.component.html',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParticipationListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private participationService : ParticipationService) { }
 
   ngOnInit() {
   }
